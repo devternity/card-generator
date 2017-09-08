@@ -12,7 +12,8 @@ class CardGeneratorTest {
     println lv.latcraft.devternity.cards.CardGenerator.generate([
         cardType    : 'BLACK_CHAOS',
         speakerName : 'Andrey Adamovich',
-        speechTitle : 'An amazingly cool speech that will change everything',
+        speechTitleLine1 : 'An amazingly cool speech',
+        speechTitleLine2 : 'that will change everything',
         speakerImage: 'http://extremeautomation.io/img/signature/andreyadamovich.png',
     ], context)
   }
