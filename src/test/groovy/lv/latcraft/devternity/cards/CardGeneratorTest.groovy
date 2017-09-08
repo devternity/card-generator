@@ -1,0 +1,32 @@
+package lv.latcraft.devternity.cards
+
+import com.amazonaws.services.lambda.runtime.Context
+import com.amazonaws.services.lambda.runtime.LambdaLogger
+import groovy.mock.interceptor.StubFor
+import org.junit.Test
+
+class CardGeneratorTest {
+
+    @Test
+    void testGenerator() {
+        println CardGenerator.generate([
+                name    : 'Andrey Adamovich',
+                ticketId: 'RVUhC4YTTonZqj1earUh',
+                product : 'DT_RIX_17',
+                what    : 'Conference day',
+                when    : '1nd of December, 2017',
+                company : 'Aestas/IT',
+                email   : 'andrey@aestasit.com',
+                webhook : 'https://requestb.in/r38ozdr3'
+        ], context)
+    }
+
+    private static Context getContext() {
+        def context = new StubFor(Context)
+        def logger = new StubFor(LambdaLogger)
+        logger.demand.log(0..10) { String message -> System.out.println message }
+        context.demand.getLogger(0..10) { logger.proxyInstance() }
+        (Context) context.proxyInstance()
+    }
+
+}

@@ -1,3 +1,3 @@
 # card-generator
 
-Generator code for DevTernity speaker and workshop cards
+Generator code for DevTernity speaker and workshop cards.
