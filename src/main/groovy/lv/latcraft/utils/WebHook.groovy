@@ -1,4 +1,4 @@
-package lv.latcraft.devternity.cards
+package lv.latcraft.utils
 
 import groovy.transform.Canonical
 import com.mashape.unirest.http.ObjectMapper

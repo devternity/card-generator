@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.model.PutObjectRequest
 import groovy.util.logging.Commons
 import groovy.util.slurpersupport.GPathResult
 import groovy.xml.XmlUtil
+import lv.latcraft.utils.WebHook
 
 import static lv.latcraft.utils.FileMethods.temporaryFile
 import static lv.latcraft.utils.QRMethods.renderQRCodePNGImage
