@@ -11,7 +11,8 @@ class CardInfo {
 
   String cardType
   String speakerName
-  String speechTitle
+  String speechTitleLine1
+  String speechTitleLine2
   String speakerImage
   String webHook
 

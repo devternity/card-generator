@@ -70,8 +70,8 @@ class CardGenerator {
   static String prepareSVG(String svgText, CardInfo card, File image) {
     GPathResult svg = new XmlSlurper().parseText(svgText)
     setElementValue(svg, 'speaker-name', sanitizeName(card.speakerName))
-    setElementValue(svg, 'speech-title-line1', sanitizeName(card.speechTitle))
-    // setElementValue(svg, 'speech-title-line2', sanitizeName(card.speechTitle))
+    setElementValue(svg, 'speech-title-line-1', sanitizeName(card.speechTitleLine1))
+    setElementValue(svg, 'speech-title-line-2', sanitizeName(card.speechTitleLine2))
     setAttributeValue(svg, 'speaker-image', 'xlink:href', "data:image/png;base64,${image.bytes.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
     XmlUtil.serialize(svg)
   }

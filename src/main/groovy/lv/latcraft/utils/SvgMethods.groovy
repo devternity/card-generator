@@ -32,7 +32,7 @@ class SvgMethods {
   static File renderPNG(File svgFile) {
     def t = new PNGTranscoder()
     t.addTranscodingHint(KEY_BACKGROUND_COLOR, Color.WHITE)
-    configureFonts(t)
+    // configureFonts(t)
     String svgURI = svgFile.toURI().toString()
     File pngFile = temporaryFile('temporary', '.png')
     try {

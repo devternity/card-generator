@@ -9,15 +9,15 @@ class WebHook {
 
   {
     Unirest.objectMapper = new ObjectMapper() {
-        def jackson = new com.fasterxml.jackson.databind.ObjectMapper()
+      def jackson = new com.fasterxml.jackson.databind.ObjectMapper()
 
-        public Object readValue(String value, Class valueType) {
-          jackson.readValue(value, valueType)
-        }
+      Object readValue(String value, Class valueType) {
+        jackson.readValue(value, valueType)
+      }
 
-        public String writeValue(Object value) {
-          jackson.writeValueAsString(value)
-        }
+      String writeValue(Object value) {
+        jackson.writeValueAsString(value)
+      }
     }
   }
 
@@ -25,9 +25,9 @@ class WebHook {
 
   def trigger(body) {
     def response = Unirest.post(url)
-    .header("Content-Type", "application/json")
-    .body(body)
-    .asString()
+        .header("Content-Type", "application/json")
+        .body(body)
+        .asString()
 
     response.status
   }
