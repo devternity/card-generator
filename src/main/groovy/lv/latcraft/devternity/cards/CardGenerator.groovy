@@ -59,7 +59,7 @@ class CardGenerator {
   }
 
   private static String cardFileName(CardInfo card, String extension) {
-    "card-${card.speakerName.toLowerCase().replaceAll(' ', '-')}.${extension}".toString()
+    "card-${card.cardType.toLowerCase().replaceAll('_', '-')}-${card.speakerName.toLowerCase().replaceAll(' ', '-')}.${extension}".toString()
   }
 
   static String getSvgTemplate(String cardType) {

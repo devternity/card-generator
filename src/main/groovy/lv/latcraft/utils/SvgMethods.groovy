@@ -23,6 +23,7 @@ class SvgMethods {
     t.addTranscodingHint(KEY_BACKGROUND_COLOR, Color.WHITE)
     t.addTranscodingHint(KEY_PIXEL_UNIT_TO_MILLIMETER, new Float((float) (25.4 / DEFAULT_DPI)))
     t.addTranscodingHint(KEY_XML_PARSER_VALIDATING, FALSE)
+
     String svgURI = svgFile.toURI().toString()
     File pngFile = temporaryFile('temporary', '.png')
     try {
