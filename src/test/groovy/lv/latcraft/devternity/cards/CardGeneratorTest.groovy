@@ -7,26 +7,22 @@ import org.junit.Test
 
 class CardGeneratorTest {
 
-    @Test
-    void testGenerator() {
-        println CardGenerator.generate([
-                name    : 'Andrey Adamovich',
-                ticketId: 'RVUhC4YTTonZqj1earUh',
-                product : 'DT_RIX_17',
-                what    : 'Conference day',
-                when    : '1nd of December, 2017',
-                company : 'Aestas/IT',
-                email   : 'andrey@aestasit.com',
-                webhook : 'https://requestb.in/r38ozdr3'
-        ], context)
-    }
+  @Test
+  void testGenerator() {
+    println lv.latcraft.devternity.cards.CardGenerator.generate([
+        cardType    : 'BLACK_CHAOS',
+        speakerName : 'Andrey Adamovich',
+        speechTitle : 'An amazingly cool speech that will change everything',
+        speakerImage: 'http://extremeautomation.io/img/signature/andreyadamovich.png',
+    ], context)
+  }
 
-    private static Context getContext() {
-        def context = new StubFor(Context)
-        def logger = new StubFor(LambdaLogger)
-        logger.demand.log(0..10) { String message -> System.out.println message }
-        context.demand.getLogger(0..10) { logger.proxyInstance() }
-        (Context) context.proxyInstance()
-    }
+  private static Context getContext() {
+    def context = new StubFor(Context)
+    def logger = new StubFor(LambdaLogger)
+    logger.demand.log(0..10) { String message -> System.out.println message }
+    context.demand.getLogger(0..10) { logger.proxyInstance() }
+    (Context) context.proxyInstance()
+  }
 
 }

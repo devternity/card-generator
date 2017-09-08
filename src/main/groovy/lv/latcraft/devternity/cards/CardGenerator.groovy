@@ -8,12 +8,9 @@ import groovy.xml.XmlUtil
 import lv.latcraft.utils.WebHook
 
 import static lv.latcraft.utils.FileMethods.temporaryFile
-import static lv.latcraft.utils.QRMethods.renderQRCodePNGImage
 import static lv.latcraft.utils.S3Methods.anyoneWithTheLink
 import static lv.latcraft.utils.S3Methods.s3
-import static lv.latcraft.utils.SanitizationMethods.sanitizeCompany
 import static lv.latcraft.utils.SanitizationMethods.sanitizeName
-import static lv.latcraft.utils.SvgMethods.renderPDF
 import static lv.latcraft.utils.SvgMethods.renderPNG
 import static lv.latcraft.utils.XmlMethods.setAttributeValue
 import static lv.latcraft.utils.XmlMethods.setElementValue
@@ -25,67 +22,58 @@ class CardGenerator {
 
   static Map<String, String> generate(Map<String, String> data, Context context) {
     log.info "STEP 1: Received data: ${data}"
-    CardInfo ticket = new CardInfo(data)
-    File svgFile = temporaryFile('ticket', '.svg')
-    byte[] qrPngData = renderQRCodePNGImage(getQRData(ticket))
-    log.info "STEP 2: Generated QR image"
-    File qrFile = temporaryFile('ticket-qr', '.png')
-    qrFile.bytes = qrPngData
-    log.info "STEP 3: Saved QR image"
-    s3.putObject(putRequest(ticket, qrFile, '-qr.png'))
-    log.info "STEP 4: Uploaded PDF ticket"
-    svgFile.text = prepareSVG(getSvgTemplate(ticket.product), ticket, qrPngData)
-    log.info "STEP 5: Pre-processed SVG template"
-    File pdfFile = renderPDF(svgFile)
-    log.info "STEP 6: Generated PDF ticket ($pdfFile)"
-    s3.putObject(putRequest(ticket, pdfFile, '.pdf'))
-    log.info "STEP 7: Uploaded PDF ticket"
+    CardInfo card = new CardInfo(data)
+    File svgFile = temporaryFile('card', '.svg')
+    File imageFile = temporaryFile('speaker-image', '.png')
+    log.info "STEP 2: Created temporary files"
+    imageFile.bytes = new URL(card.speakerImage).bytes
+    log.info "STEP 3: Downloaded speaker image"
+    svgFile.text = prepareSVG(getSvgTemplate(card.cardType), card, imageFile)
+    log.info "STEP 4: Pre-processed SVG template (${svgFile})"
     File pngFile = renderPNG(svgFile)
-    log.info "STEP 8: Generated PNG preview ($pngFile)"
-    s3.putObject(putRequest(ticket, pngFile, '.png'))
-    log.info "STEP 9: Uploaded PNG preview"
+    log.info "STEP 5: Generated PNG file (${pngFile})"
+    s3.putObject(putRequest(card, pngFile, 'png'))
+    log.info "STEP 6: Uploaded PNG file"
     svgFile.delete()
+
     def response = [
-      status: 'OK',
-      qr    : "https://s3-eu-west-1.amazonaws.com/${BUCKET_NAME}/ticket-${ticket.ticketId}-qr.png".toString(),
-      pdf   : "https://s3-eu-west-1.amazonaws.com/${BUCKET_NAME}/ticket-${ticket.ticketId}.pdf".toString(),
-      png   : "https://s3-eu-west-1.amazonaws.com/${BUCKET_NAME}/ticket-${ticket.ticketId}.png".toString()
+        status: 'OK',
+        png   : "https://s3-eu-west-1.amazonaws.com/${BUCKET_NAME}/${cardFileName(card, 'png')}".toString()
     ]
 
-    if (ticket.webhook) {
-      def webHook = new WebHook(url: ticket.webhook)
+    if (card.webHook) {
+      def webHook = new WebHook(url: card.webHook)
       def status = webHook.trigger(response + [data: data])
-      log.info "STEP 10: Webhook ($webHook.url) responded with ($status)"
+      log.info "STEP 7: Webhook ($webHook.url) responded with ($status)"
     }
 
     response
   }
 
-  static PutObjectRequest putRequest(CardInfo ticket, File file, String extension) {
+  static PutObjectRequest putRequest(CardInfo card, File file, String extension) {
     new PutObjectRequest(
-      BUCKET_NAME,
-      "ticket-${ticket.ticketId}${extension}",
-      file
+        BUCKET_NAME,
+        cardFileName(card, extension),
+        file
     ).withAccessControlList(anyoneWithTheLink())
   }
 
-  static String getSvgTemplate(String product) {
-    String templateName = "DEVTERNITY_TICKET_${product}.svg"
+  private static String cardFileName(CardInfo card, String extension) {
+    "card-${card.speakerName.toLowerCase().replaceAll(' ', '-')}.${extension}".toString()
+  }
+
+  static String getSvgTemplate(String cardType) {
+    String templateName = "${cardType}.svg"
     getClass().getResource("/${templateName}")?.text ?: new File(templateName).text
   }
 
-  static String prepareSVG(String svgText, CardInfo ticket, byte[] qrImage) {
+  static String prepareSVG(String svgText, CardInfo card, File image) {
     GPathResult svg = new XmlSlurper().parseText(svgText)
-    setElementValue(svg, 'ticket-name', sanitizeName(ticket.name).toUpperCase())
-    setElementValue(svg, 'ticket-company', sanitizeCompany(ticket.company))
-    setElementValue(svg, 'ticket-when', ticket.when)
-    setElementValue(svg, 'ticket-what', ticket.what.replaceAll('_', ' '))
-    setAttributeValue(svg, 'ticket-qr', 'xlink:href', "data:image/png;base64,${qrImage.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
+    setElementValue(svg, 'speaker-name', sanitizeName(card.speakerName))
+    setElementValue(svg, 'speech-title-line1', sanitizeName(card.speechTitle))
+    // setElementValue(svg, 'speech-title-line2', sanitizeName(card.speechTitle))
+    setAttributeValue(svg, 'speaker-image', 'xlink:href', "data:image/png;base64,${image.bytes.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
     XmlUtil.serialize(svg)
-  }
-
-  static getQRData(CardInfo ticket) {
-    "${ticket.ticketId}"
   }
 
 }

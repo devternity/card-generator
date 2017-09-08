@@ -9,13 +9,10 @@ import groovy.transform.TypeChecked
 @Canonical
 class CardInfo {
 
-  String webhook
-  String email
-  String name
-  String company
-  String product
-  String ticketId
-  String when
-  String what
+  String cardType
+  String speakerName
+  String speechTitle
+  String speakerImage
+  String webHook
 
 }
