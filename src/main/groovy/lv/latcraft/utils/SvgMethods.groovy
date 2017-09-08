@@ -19,6 +19,12 @@ class SvgMethods {
   private static final int DEFAULT_DPI = 300
 
   static File renderPNG(File svgFile) {
+
+    log.debug("Font environment: " + System.getenv().JAVA_FONTS)
+    if (LambdaMethods.isInsideLambda()) {
+      log.debug("Available fonts: " + new File('/var/task/fonts').listFiles())
+    }
+
     def t = new PNGTranscoder()
     t.addTranscodingHint(KEY_BACKGROUND_COLOR, Color.WHITE)
     t.addTranscodingHint(KEY_PIXEL_UNIT_TO_MILLIMETER, new Float((float) (25.4 / DEFAULT_DPI)))
