@@ -20,9 +20,9 @@ class SvgMethods {
 
   static File renderPNG(File svgFile) {
 
-    log.debug("Font environment: " + System.getenv().JAVA_FONTS)
+    log.info("Font environment: " + System.getenv().JAVA_FONTS)
     if (LambdaMethods.isInsideLambda()) {
-      log.debug("Available fonts: " + new File('/var/task/fonts').listFiles())
+      log.info("Available fonts: " + new File('/var/task/fonts').listFiles())
     }
 
     def t = new PNGTranscoder()
