@@ -11,6 +11,11 @@ cache:
   - "$HOME/.gradle/wrapper/"
 script: 
 - ./svg-embed-font src/main/resources/BLACK_CHAOS.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/BUS.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/GRAFFITI.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/JUMPING_MAN.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/JUMPING_MAN2.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/LIBRARY.svg fonts/Lato-Heavy.ttf
 - ./gradlew -iS build -x test
 env:
   global:
@@ -25,8 +30,7 @@ deploy:
   local_dir: build/distributions
   acl: public_read
 after_deploy:
-- aws lambda update-function-code --function-name devternity_card_generator --s3-bucket
-  devternity-code --s3-key card-generator.zip
+- aws lambda update-function-code --function-name devternity_card_generator --s3-bucket devternity-code --s3-key card-generator.zip
 notifications:
   slack:
     secure: ZSh5SQZqQxI2JpAMkK6Uv0TreIyqQyNQWki5m6IRS8hHDwOD1WvDBSIwQor2hjyW7DTp61luvs6T/ON/vRyTBRfmpH71rwgBmtBih2PvVs0Xm+8+A1vwqlHuB/4zs5tgh6fo81RUth8fJJjd5txwdo7YLNZv3qXEw7wpkFHVPWgEIcOSKtabipKgei81ryqEAi8QeHFNhDJx+sUQtrreePj4G32l5k1f2Ua0IM8viPD87obhXDU1xPCPNZk1XliqZ5hgMHnnBcRi8L8SEP/WEgt//xuIHQ3IWY8qJlBwAqRK05uPSF/k10gtfugfheL50TxblfKMiJO2bi0uX7Yo+ZxMJsU1NA/xPJokKtukCi8PH0rPvgDhvRKLOYf89bhp2pxIs/CikoLcwWZFMgm6NeWfH1IfMQFkwk2Bj+OlWbqqnBZO/7mHJ1LUd0iVVFzG+AqKCHFwP23Wa16xEQK9XxyeFwHAnLx2YdmCIFUSTwrYB+yru57WLZa6ZhGY0tGC6alEi6UFuJGin2D/Q1ajdMR86gMRbqXvBYdkShtHa/NdLEM1+bTGWyE553xfVHzovc3P3QeEAiRR4je4V3PwqJrn7JoTcSMor7kUZrNRT+Rv7A1K8RFALe3VRObdlz0jFThoXrZyyVlPIRf4Eg9UrKGKpy16ednWk5UvSun0NTo=
