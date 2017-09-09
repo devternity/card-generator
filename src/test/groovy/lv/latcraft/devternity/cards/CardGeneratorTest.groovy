@@ -9,8 +9,8 @@ class CardGeneratorTest {
 
   @Test
   void testGenerator() {
-    println lv.latcraft.devternity.cards.CardGenerator.generate([
-        cardType    : 'BUS',
+    println CardGenerator.generate([
+        cardType    : 'BLACK_CHAOS',
         speakerName : 'Andrey Adamovich',
         speechTitleLine1 : 'An amazingly cool speech',
         speechTitleLine2 : 'that will change everything',

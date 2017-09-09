@@ -10,12 +10,12 @@ cache:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
 script: 
-- ./svg-embed-font src/main/resources/BLACK_CHAOS.svg fonts/Lato-Heavy.ttf
-- ./svg-embed-font src/main/resources/BUS.svg fonts/Lato-Heavy.ttf
-- ./svg-embed-font src/main/resources/GRAFFITI.svg fonts/Lato-Heavy.ttf
-- ./svg-embed-font src/main/resources/JUMPING_MAN.svg fonts/Lato-Heavy.ttf
-- ./svg-embed-font src/main/resources/JUMPING_MAN2.svg fonts/Lato-Heavy.ttf
-- ./svg-embed-font src/main/resources/LIBRARY.svg fonts/Lato-Heavy.ttf
+- ./svg-embed-font src/main/resources/BLACK_CHAOS.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
+- ./svg-embed-font src/main/resources/BUS.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
+- ./svg-embed-font src/main/resources/GRAFFITI.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
+- ./svg-embed-font src/main/resources/JUMPING_MAN.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
+- ./svg-embed-font src/main/resources/JUMPING_MAN2.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
+- ./svg-embed-font src/main/resources/LIBRARY.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Semibold.ttf
 - ./gradlew -iS build -x test
 env:
   global:
