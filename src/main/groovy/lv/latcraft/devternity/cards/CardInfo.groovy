@@ -10,7 +10,9 @@ import groovy.transform.TypeChecked
 class CardInfo {
 
   String cardType
+  String speakerNameFontSize
   String speakerName
+  String speechTitleFontSize
   String speechTitleLine1
   String speechTitleLine2
   String speakerImage

@@ -20,8 +20,8 @@ class SvgMethods {
 
   static File renderPNG(File svgFile) {
 
-    log.info("Font environment: " + System.getenv().JAVA_FONTS)
     if (LambdaMethods.isInsideLambda()) {
+      log.info("Font environment: " + System.getenv().JAVA_FONTS)
       log.info("Available fonts: " + new File('/var/task/fonts').listFiles())
     }
 

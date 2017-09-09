@@ -10,10 +10,12 @@ class CardGeneratorTest {
   @Test
   void testGenerator() {
     println CardGenerator.generate([
-        cardType    : 'BLACK_CHAOS',
+        cardType    : 'BLACK_CHAOS.embed',
         speakerName : 'Andrey Adamovich',
+        speakerNameFontSize: '60',
         speechTitleLine1 : 'An amazingly cool speech',
         speechTitleLine2 : 'that will change everything',
+        speechTitleFontSize: '50',
         speakerImage: 'http://extremeautomation.io/img/signature/andreyadamovich.png',
     ], context)
   }

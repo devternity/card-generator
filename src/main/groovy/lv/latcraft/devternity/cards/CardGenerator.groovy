@@ -14,6 +14,8 @@ import static lv.latcraft.utils.SanitizationMethods.sanitizeName
 import static lv.latcraft.utils.SvgMethods.renderPNG
 import static lv.latcraft.utils.XmlMethods.setAttributeValue
 import static lv.latcraft.utils.XmlMethods.setElementValue
+import static lv.latcraft.utils.XmlMethods.replaceAttributeValue
+import static lv.latcraft.utils.XmlMethods.replaceParentAttributeValue
 
 @Commons
 class CardGenerator {
@@ -34,7 +36,7 @@ class CardGenerator {
     log.info "STEP 5: Generated PNG file (${pngFile})"
     s3.putObject(putRequest(card, pngFile, 'png'))
     log.info "STEP 6: Uploaded PNG file"
-    svgFile.delete()
+    // svgFile.delete()
 
     def response = [
         status: 'OK',
@@ -70,8 +72,18 @@ class CardGenerator {
   static String prepareSVG(String svgText, CardInfo card, File image) {
     GPathResult svg = new XmlSlurper().parseText(svgText)
     setElementValue(svg, 'speaker-name', sanitizeName(card.speakerName))
+    if (card.speakerNameFontSize) {
+      replaceAttributeValue(svg, 'speaker-name', 'style', "font-size:\\d+px", "font-size:${card.speakerNameFontSize}px")
+      replaceParentAttributeValue(svg, 'speaker-name', 'style', "font-size:\\d+px", "font-size:${card.speakerNameFontSize}px")
+    }
     setElementValue(svg, 'speech-title-line-1', sanitizeName(card.speechTitleLine1))
     setElementValue(svg, 'speech-title-line-2', sanitizeName(card.speechTitleLine2))
+    if (card.speechTitleFontSize) {
+      replaceAttributeValue(svg, 'speech-title-line-1', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
+      replaceAttributeValue(svg, 'speech-title-line-2', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
+      replaceParentAttributeValue(svg, 'speech-title-line-1', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
+      replaceParentAttributeValue(svg, 'speech-title-line-2', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
+    }
     setAttributeValue(svg, 'speaker-image', 'xlink:href', "data:image/png;base64,${image.bytes.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
     XmlUtil.serialize(svg)
   }
