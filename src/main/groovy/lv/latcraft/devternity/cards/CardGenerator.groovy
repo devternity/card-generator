@@ -2,6 +2,7 @@ package lv.latcraft.devternity.cards
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.amazonaws.services.s3.model.PutObjectRequest
+import com.mashape.unirest.http.Unirest
 import groovy.util.logging.Commons
 import groovy.util.slurpersupport.GPathResult
 import groovy.xml.XmlUtil
@@ -28,7 +29,7 @@ class CardGenerator {
     File svgFile = temporaryFile('card', '.svg')
     File imageFile = temporaryFile('speaker-image', '.png')
     log.info "STEP 2: Created temporary files"
-    imageFile.bytes = new URL(card.speakerImage).bytes
+    imageFile.bytes = Unirest.get(card.speakerImage).asBinary().rawBody.bytes
     log.info "STEP 3: Downloaded speaker image"
     svgFile.text = prepareSVG(getSvgTemplate(card.cardType), card, imageFile)
     log.info "STEP 4: Pre-processed SVG template (${svgFile})"
@@ -36,7 +37,7 @@ class CardGenerator {
     log.info "STEP 5: Generated PNG file (${pngFile})"
     s3.putObject(putRequest(card, pngFile, 'png'))
     log.info "STEP 6: Uploaded PNG file"
-    // svgFile.delete()
+    svgFile.delete()
 
     def response = [
         status: 'OK',
