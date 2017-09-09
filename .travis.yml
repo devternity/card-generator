@@ -9,7 +9,9 @@ cache:
 - directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
-script: "./gradlew -iS build -x test"
+script: 
+- ./svg-embed-font src/main/resources/BLACK_CHAOS.svg fonts/Lato-Heavy.ttf
+- ./gradlew -iS build -x test
 env:
   global:
     - secure: "kYf5wXWEbYIZcmFevn7uBgtV3XRf8GsexjkanIR/umRDtGQByX9ZaE3JQ26JXDG7LLuCBU9ruiMaZk9y6+zbvSInNYQpgdoBjWrEpSCBkqsAbsGpWyXayS6mZbYnB7t6qD+h18jM1QJG25hB+n/3rI4ZnN+4H2n0VuD5sI4fFVMvvoMjfyKv+p25ST0vMp6d0mXhn1CycQYCeIaQ2WpHba/kFO4b+EyjRzhuWkdxWiFW59Z1z5wEloELekxumQm3UoZc+L+xhnOxcHYKBrAaQPyjg08r1I5sN0wWPNQiXgKd5vash/vU8z/kaLGFk7su1rH+RnpPe17C8qQR7sky7jp01keb5wMx8a+WtwAsCLQLl9O+3rzexwyXIYUTVwR36ZU2vacJBbAu8wJr9OICw6gEKDGlolOo4rd2CCC++1nqYfoYmccW3ZwsWEBUq/QK+FPTTL5Rklb25nsTEMTeqRszIwFIycXdC2IiPBg7/uczymleVDActPENdsjh/6QToRDD2EklTyzC2qhNbJ0HU7yzd3mRxDnHqbOPcojuay+WsTGxErDKeLk0LifSf7UXQGY9nm5wHBCbBL6i5J4JbWvVpNVQtCa2rZZQ9QOONbAFRjTeYA+Qng8VutOZRmX+P1E3V7maI0cyr59VMEnCSk0zNS+w9dHzV4X9Vinywhk="
