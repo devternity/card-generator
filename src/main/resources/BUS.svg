@@ -1844,26 +1844,6 @@
          x="1486.0422"
          y="951.8811"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.15999985px;font-family:Lato;-inkscape-font-specification:Lato;fill:#ffffff;">1st of December, 2017</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:72.59999847px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1521.1155"
-       y="750.03088"
-       id="text4473-4"
-       sodipodi:linespacing="125%"
-       inkscape:export-filename="cards\yegor_bugayenko.png"
-       inkscape:export-xdpi="90.013855"
-       inkscape:export-ydpi="90.013855"><tspan
-         sodipodi:role="line"
-         id="tspan4475-9"
-         x="1526.9764"
-         y="750.03088"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48.40000153px;font-family:Lato;-inkscape-font-specification:'Lato Bold';fill:#ffffff">XDSD: Meetings-Free </tspan><tspan
-         sodipodi:role="line"
-         x="1521.1155"
-         y="810.53088"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:48.40000153px;font-family:Lato;-inkscape-font-specification:'Lato Bold';fill:#ffffff"
-         id="tspan4481-8">Software Development Methodology</tspan></text>
     <g
        style="display:inline;stroke:#ffffff"
        id="g5068"
@@ -1988,4 +1968,28 @@
        x="268.69537"
        y="169.49525"
        style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:70px;font-family:Lato;-inkscape-font-specification:'Lato Heavy';fill:#ffffff">Yegor Bugayenko</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:600;font-size:50px;line-height:125%;font-family:'Open Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Open Sans Semi-Bold';font-stretch:normal;font-variant:normal;"
+     x="483.55396"
+     y="309.72427"
+     id="text4499"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="speech-title-line-1"
+       x="483.55396"
+       y="309.72427"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:50px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';fill:#ffffff;">XDSD: Meetings-free</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:600;font-size:50px;line-height:125%;font-family:'Open Sans';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;-inkscape-font-specification:'Open Sans Semi-Bold';font-stretch:normal;font-variant:normal;"
+     x="480.04764"
+     y="367.23767"
+     id="text4499-6"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="speech-title-line-2"
+       x="480.04764"
+       y="367.23767"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:50px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';fill:#ffffff;">Software Development Methodology</tspan></text>
 </svg>
