@@ -1878,7 +1878,7 @@
      id="text4495"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       id="tspan4497"
+       id="speaker-name"
        x="268.69537"
        y="169.49525"
        style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;font-size:70px;font-family:Lato;-inkscape-font-specification:'Lato Heavy';fill:#ffffff">Yegor Bugayenko</tspan></text>
@@ -1890,7 +1890,7 @@
      id="text4499"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       id="tspan4501"
+       id="speech-title-line-1"
        x="483.55396"
        y="489.72427"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:50px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';fill:#ffffff">XDSD: Meetings-free</tspan></text>
@@ -1902,7 +1902,7 @@
      id="text4499-6"
      sodipodi:linespacing="125%"><tspan
        sodipodi:role="line"
-       id="tspan4501-3"
+       id="speech-title-line-2"
        x="480.04764"
        y="547.23767"
        style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:50px;font-family:'Open Sans';-inkscape-font-specification:'Open Sans Semi-Bold';fill:#ffffff">Software Development Methodology</tspan></text>
