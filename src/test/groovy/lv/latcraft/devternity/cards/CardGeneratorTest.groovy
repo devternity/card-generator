@@ -16,7 +16,7 @@ class CardGeneratorTest {
         speechTitleLine1 : 'An amazingly cool speech',
         speechTitleLine2 : 'that will change everything',
         speechTitleFontSize: '60',
-        speakerImage: 'http://extremeautomation.io/img/signature/andreyadamovich.png',
+        speakerImage: 'http://devternity.com/images/kief.png',
     ], context)
   }
 
