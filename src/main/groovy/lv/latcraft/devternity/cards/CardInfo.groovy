@@ -10,12 +10,22 @@ import groovy.transform.TypeChecked
 class CardInfo {
 
   String cardType
-  String speakerNameFontSize
+
   String speakerName
-  String speechTitleFontSize
+  String speakerNameFontSize
+  String speakerNameShiftX
+  String speakerNameShiftY
+
   String speechTitleLine1
   String speechTitleLine2
+  String speechTitleFontSize
+  String speechTitleLine1ShiftX
+  String speechTitleLine1ShiftY
+  String speechTitleLine2ShiftX
+  String speechTitleLine2ShiftY
+
   String speakerImage
+
   String webHook
 
 }

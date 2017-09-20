@@ -7,12 +7,14 @@ import groovy.util.logging.Commons
 import groovy.util.slurpersupport.GPathResult
 import groovy.xml.XmlUtil
 import lv.latcraft.utils.WebHook
+import lv.latcraft.utils.XmlMethods
 
 import static lv.latcraft.utils.FileMethods.temporaryFile
 import static lv.latcraft.utils.S3Methods.anyoneWithTheLink
 import static lv.latcraft.utils.S3Methods.s3
 import static lv.latcraft.utils.SanitizationMethods.sanitizeName
 import static lv.latcraft.utils.SvgMethods.renderPNG
+import static lv.latcraft.utils.XmlMethods.addToAttributeDoubleValue
 import static lv.latcraft.utils.XmlMethods.setAttributeValue
 import static lv.latcraft.utils.XmlMethods.setElementValue
 import static lv.latcraft.utils.XmlMethods.replaceAttributeValue
@@ -74,19 +76,25 @@ class CardGenerator {
     GPathResult svg = new XmlSlurper().parseText(svgText)
     setElementValue(svg, 'speaker-name', sanitizeName(card.speakerName))
     if (card.speakerNameFontSize) {
-      replaceAttributeValue(svg, 'speaker-name', 'style', "font-size:\\d+px", "font-size:${card.speakerNameFontSize}px")
-      replaceParentAttributeValue(svg, 'speaker-name', 'style', "font-size:\\d+px", "font-size:${card.speakerNameFontSize}px")
+      updateFontSize(svg, 'speaker-name', card.speakerNameFontSize)
+    }
+    if (card.speakerNameShiftX || card.speakerNameShiftY) {
+      addToAttributeDoubleValue(svg, 'speaker-name', 'x', card.speakerNameShiftX ?: "0")
+      addToAttributeDoubleValue(svg, 'speaker-name', 'y', card.speakerNameShiftY ?: "0")
     }
     setElementValue(svg, 'speech-title-line-1', sanitizeName(card.speechTitleLine1))
     setElementValue(svg, 'speech-title-line-2', sanitizeName(card.speechTitleLine2))
     if (card.speechTitleFontSize) {
-      replaceAttributeValue(svg, 'speech-title-line-1', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
-      replaceAttributeValue(svg, 'speech-title-line-2', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
-      replaceParentAttributeValue(svg, 'speech-title-line-1', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
-      replaceParentAttributeValue(svg, 'speech-title-line-2', 'style', "font-size:\\d+px", "font-size:${card.speechTitleFontSize}px")
+      updateFontSize(svg, 'speech-title-line-1', card.speechTitleFontSize)
+      updateFontSize(svg, 'speech-title-line-2', card.speechTitleFontSize)
     }
     setAttributeValue(svg, 'speaker-image', 'xlink:href', "data:image/png;base64,${image.bytes.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
     XmlUtil.serialize(svg)
+  }
+
+  private static void updateFontSize(GPathResult svg, String elementId, String fontSize) {
+    replaceAttributeValue(svg, elementId, 'style', "font-size:\\d+px", "font-size:${fontSize}px")
+    replaceParentAttributeValue(svg, elementId, 'style', "font-size:\\d+px", "font-size:${fontSize}px")
   }
 
 }

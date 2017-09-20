@@ -1,9 +1,9 @@
 {
-  "cardType": "BLACK_CHAOS.embed",
+  "cardType": "LIBRARY2.embed",
   "speakerName": "Kief Morris",
-  "speakerNameFontSize": "70",
-  "speechTitleLine1": "Implementing",
-  "speechTitleLine2": "Infrastructure as Code",
-  "speechTitleFontSize": "60",
+  "speakerNameFontSize": "80",
+  "speechTitleLine1": "Implementing Infrastructure as Code",
+  "speechTitleLine2": "",
+  "speechTitleFontSize": "40",
   "speakerImage": "https://devternity.com/images/kief.png"
 }

@@ -16,6 +16,7 @@ script:
 - ./svg-embed-font src/main/resources/JUMPING_MAN.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Bold.ttf
 - ./svg-embed-font src/main/resources/JUMPING_MAN2.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Bold.ttf
 - ./svg-embed-font src/main/resources/LIBRARY.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Bold.ttf
+- ./svg-embed-font src/main/resources/LIBRARY2.svg fonts/Lato-Heavy.ttf fonts/OpenSans-Bold.ttf
 - ./gradlew -iS build -x test
 env:
   global:

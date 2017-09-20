@@ -12,8 +12,20 @@ class XmlMethods {
     findElementById(svg, elementId)?.@"${attributeId}" = value
   }
 
+  static String getAttributeValue(GPathResult svg, String elementId, String attributeId) {
+    findElementById(svg, elementId)?.@"${attributeId}".toString()
+  }
+
+  static getAttributeValueAsDouble(GPathResult svg, String elementId, String attributeId) {
+    Double.parseDouble(getAttributeValue(svg, elementId, attributeId))
+  }
+
+  static addToAttributeDoubleValue(GPathResult svg, String elementId, String attributeId, String value) {
+    findElementById(svg, elementId)?.@"${attributeId}" = String.format(".4f", (getAttributeValueAsDouble(svg, elementId, attributeId) + Double.parseDouble(value)))
+  }
+
   static replaceAttributeValue(GPathResult svg, String elementId, String attributeId, String search, String replace) {
-    findElementById(svg, elementId)?.@"${attributeId}" = findElementById(svg, elementId)?.@"${attributeId}".toString().replaceAll(search, replace)
+    findElementById(svg, elementId)?.@"${attributeId}" = getAttributeValue(svg, elementId, attributeId).replaceAll(search, replace)
   }
 
   static replaceParentAttributeValue(GPathResult svg, String elementId, String attributeId, String search, String replace) {
