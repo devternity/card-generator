@@ -10,12 +10,18 @@ class CardGeneratorTest {
   @Test
   void testGenerator() {
     println CardGenerator.generate([
-        cardType    : 'BLACK_CHAOS.embed',
+        cardType    : 'LIBRARY2.embed',
         speakerName : 'Andrey Adamovich',
-        speakerNameFontSize: '70',
+        // speakerNameFontSize: '70',
+        // speakerNameShiftX: '0',
+        // speakerNameShiftY: '0',
         speechTitleLine1 : 'An amazingly cool speech',
         speechTitleLine2 : 'that will change everything',
-        speechTitleFontSize: '60',
+        speechTitleFontSize: '45',
+        // speechTitleLine1ShiftX: '0',
+        speechTitleLine1ShiftY: '25',
+        // speechTitleLine2ShiftX: '0',
+        speechTitleLine2ShiftY: '32',
         speakerImage: 'http://devternity.com/images/kief.png',
     ], context)
   }

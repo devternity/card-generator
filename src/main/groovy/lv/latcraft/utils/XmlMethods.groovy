@@ -21,7 +21,7 @@ class XmlMethods {
   }
 
   static addToAttributeDoubleValue(GPathResult svg, String elementId, String attributeId, String value) {
-    findElementById(svg, elementId)?.@"${attributeId}" = String.format(".4f", (getAttributeValueAsDouble(svg, elementId, attributeId) + Double.parseDouble(value)))
+    findElementById(svg, elementId)?.@"${attributeId}" = String.format("%.4f", (getAttributeValueAsDouble(svg, elementId, attributeId) + Double.parseDouble(value)))
   }
 
   static replaceAttributeValue(GPathResult svg, String elementId, String attributeId, String search, String replace) {

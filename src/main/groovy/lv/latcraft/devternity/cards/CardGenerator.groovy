@@ -7,7 +7,6 @@ import groovy.util.logging.Commons
 import groovy.util.slurpersupport.GPathResult
 import groovy.xml.XmlUtil
 import lv.latcraft.utils.WebHook
-import lv.latcraft.utils.XmlMethods
 
 import static lv.latcraft.utils.FileMethods.temporaryFile
 import static lv.latcraft.utils.S3Methods.anyoneWithTheLink
@@ -79,8 +78,7 @@ class CardGenerator {
       updateFontSize(svg, 'speaker-name', card.speakerNameFontSize)
     }
     if (card.speakerNameShiftX || card.speakerNameShiftY) {
-      addToAttributeDoubleValue(svg, 'speaker-name', 'x', card.speakerNameShiftX ?: "0")
-      addToAttributeDoubleValue(svg, 'speaker-name', 'y', card.speakerNameShiftY ?: "0")
+      adjustElementPosition(svg, 'speaker-name', card.speakerNameShiftX, card.speakerNameShiftY)
     }
     setElementValue(svg, 'speech-title-line-1', sanitizeName(card.speechTitleLine1))
     setElementValue(svg, 'speech-title-line-2', sanitizeName(card.speechTitleLine2))
@@ -88,8 +86,19 @@ class CardGenerator {
       updateFontSize(svg, 'speech-title-line-1', card.speechTitleFontSize)
       updateFontSize(svg, 'speech-title-line-2', card.speechTitleFontSize)
     }
+    if (card.speechTitleLine1ShiftX || card.speechTitleLine1ShiftY) {
+      adjustElementPosition(svg, 'speech-title-line-1', card.speechTitleLine1ShiftX, card.speechTitleLine1ShiftY)
+    }
+    if (card.speechTitleLine2ShiftX || card.speechTitleLine2ShiftY) {
+      adjustElementPosition(svg, 'speech-title-line-2', card.speechTitleLine2ShiftX, card.speechTitleLine2ShiftY)
+    }
     setAttributeValue(svg, 'speaker-image', 'xlink:href', "data:image/png;base64,${image.bytes.encodeBase64().toString().toList().collate(76)*.join('').join(' ')}".toString())
     XmlUtil.serialize(svg)
+  }
+
+  private static void adjustElementPosition(GPathResult svg, String elementId, String shiftX, String shiftY) {
+    addToAttributeDoubleValue(svg, elementId, 'x', shiftX ?: "0")
+    addToAttributeDoubleValue(svg, elementId, 'y', shiftY ?: "0")
   }
 
   private static void updateFontSize(GPathResult svg, String elementId, String fontSize) {
