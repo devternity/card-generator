@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Uwe Friedrichsen",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "The 7 Quests of",
+  "speechTitleLine2": "Resilient Software Design",
+  "speechTitleFontSize": "45",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "25",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "32",
+  "speakerImage": "http://devternity.com/images/uwe.jpg"
+}
