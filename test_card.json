@@ -1,9 +1,15 @@
 {
   "cardType": "LIBRARY2.embed",
   "speakerName": "Kief Morris",
-  "speakerNameFontSize": "80",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
   "speechTitleLine1": "Implementing Infrastructure as Code",
   "speechTitleLine2": "",
   "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "50",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "0",
   "speakerImage": "https://devternity.com/images/kief.png"
 }
