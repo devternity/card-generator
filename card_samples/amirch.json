@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Amir Chaudhry",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "Docker Under the Hood",
+  "speechTitleLine2": "",
+  "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "50",
+  "speechTitleLine1ShiftY": "20",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "32",
+  "speakerImage": "http://devternity.com/images/amirch.png"
+}

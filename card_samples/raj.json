@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Raj Singh",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "Using AWS Lambda and Azure Functions",
+  "speechTitleLine2": "to Develop Serverless Apps",
+  "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "25",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "32",
+  "speakerImage": "http://devternity.com/images/raj.png"
+}

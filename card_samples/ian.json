@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Ian Cooper",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "TDD, Where Did It All Go Wrong",
+  "speechTitleLine2": "",
+  "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "50",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "32",
+  "speakerImage": "http://devternity.com/images/ianco.png"
+}
