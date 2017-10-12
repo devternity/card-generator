@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Christian Wenz",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "Web Application Security Risks:",
+  "speechTitleLine2": "A Look at OWASP Top Ten 2017",
+  "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "25",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "32",
+  "speakerImage": "http://devternity.com/images/wenz.png"
+}

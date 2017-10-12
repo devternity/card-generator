@@ -1,0 +1,15 @@
+{
+  "cardType": "LIBRARY2.embed",
+  "speakerName": "Nikolas Burk",
+  "speakerNameFontSize": "70",
+  "speakerNameShiftX": "0",
+  "speakerNameShiftY": "0",
+  "speechTitleLine1": "REST in Peace - Modern API",
+  "speechTitleLine2": "Design with GraphQL",
+  "speechTitleFontSize": "40",
+  "speechTitleLine1ShiftX": "0",
+  "speechTitleLine1ShiftY": "25",
+  "speechTitleLine2ShiftX": "0",
+  "speechTitleLine2ShiftY": "20",
+  "speakerImage": "http://devternity.com/images/nburk.png"
+}
